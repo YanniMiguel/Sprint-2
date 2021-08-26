@@ -1,0 +1,294 @@
+html,body{
+    font-family:serif;
+}
+
+body{
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+/* HEADER */
+.header{
+    display: block;
+    padding: 30px;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+}
+
+h1{
+    font-family: 'Arvo', serif;
+    display: inline-block;
+    position: absolute;
+    top: 60px;
+    font-size: 40px;
+    margin: 0 0 0 20px;
+}
+
+/* NAVIGATION BAR */
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #191D32;
+    
+
+}
+
+nav li{
+    float: right;
+    position: relative;
+    margin-left: 20px;
+    
+}
+
+
+nav li:first-child{
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    padding: 18px 20px;
+    text-decoration: none;
+    
+}
+
+/* Change color of nav button when hovered */
+nav li a:hover:not(.active){
+    transition-duration: 0.5s;
+    color:#7D451B;
+    background-color: #F9DC5C;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* The moving bar above the buttons (except the home button) */
+nav a:not(.return-home)::before{
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    right: 0;
+    background-color: #191D32;
+    position: absolute;
+    top: 0px;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before{
+    width: 100%;
+}
+
+/* Home button animation */
+nav li .return-home{
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+nav li .return-home:after{
+    /* \00ab for the "<<" symbol*/
+    content: '\00ab';
+    font-size: 30px;
+    position: absolute;
+    opacity: 0;
+    top: 5px;
+    left: -60px;
+    transition: 0.5s;
+}
+
+nav li .return-home:hover{
+    padding-left: 30px;
+}
+
+nav li .return-home:hover::after{
+    opacity: 1;
+    right: 0;
+}
+
+main .gallery .wrapper h2{
+    font-family: 'Arvo', serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 30px;
+}
+
+/* GALLERY */
+
+.gallery-holder{
+
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: auto;
+    margin-right: auto
+    
+}
+
+/* Format for every artwork uploaded (Image, Title, and Description) */
+.gallery-holder .art-box{
+    padding: 20px;
+    width: 290px;
+    height: 400px;
+    flex-grow: 1;
+    text-decoration: none;
+    max-width: 250px;
+    max-height: 500px;
+    
+}
+
+/* Preview image */
+.art-box .art-thumb img{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
+
+.art-box .art-thumb img:hover{
+    transition: all ease-in-out 250ms;
+    transform: scale(1.1);
+    opacity: 0.7;
+}
+.art-box h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #111;
+    flex-wrap: nowrap;
+}
+
+.art-box p{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    color: #111;
+    flex-wrap: nowrap;
+}
+
+/* Modal */
+/* Popup within the page when an image in the gallery is clicked */
+
+.modal{
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease-out;
+}
+
+/* "opens" the image to be displayed on screen */
+.modal.open{
+    opacity: 1;
+    pointer-events: all;
+    z-index: 100; /* Image will be displayed over the navigation bar */
+}
+
+.full-img {
+    position: absolute;
+    height: 70%;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: all 0.25s ease-out;
+}
+
+.full-img.open{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Uploading to the gallery */
+.gallery-upload{
+    text-align: center;
+    max-width: 100%;
+    width: 700px;
+    height: 60%;
+    margin: 0 auto;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+}
+p{
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+}
+
+/* Effects for when clicking on the input bar */
+
+input[type=text]{
+    display: block;
+    margin: 10px auto;
+    background: #ffffff;
+    border-radius: 20px;
+    border-color: #191D32 ;
+    text-align-last: center;
+    padding-top: 5px;
+    height: 30px;
+    width: 40%;
+    
+}
+
+input[type=text]:focus{
+    text-align:center ;
+    outline: none !important;
+    border:2.5px solid #191D32;
+    box-shadow: 0 0 10px #6fccd8;
+}
+
+input[type=file]{
+    display: block;
+    margin: 10px auto;
+    text-align-last: center;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/* Submit button effects */
+button[type=submit]{
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #191D32;
+    border-radius: 20px;
+}
+
+button[type=submit]:hover{
+    background-color: #191D32;
+    color:white;
+    
+}
+
+button[type=submit]:focus{
+    background-color: #424c80;
+    columns: white;
+    border: 2px solid #424c80;
+}
+
+.error{
+    color: red
+}
